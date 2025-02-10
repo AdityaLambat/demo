@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Service</title>
+  <link rel="stylesheet" href="mainstyles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="welcome-message">Welcome <span style="font-weight: bold" id="username">User</span></div>
+
+    <div class="top-bar">
+      <ul>
+        <li><a href="customer-home.html" id="home">Home</a></li>
+        <li><a href="customer-booking.html" id="booking">Booking Service</a></li>
+        <li><a href="#" id="tracking">Tracking</a></li>
+        <li><a href="#" id="previous-booking">Previous Booking</a></li>
+        <li><a href="#" id="contact-support">Contact Support</a></li>
+        <li><a href="#" onclick="logout()" id="logout">Logout</a></li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <h1>Book a Parcel</h1>
+      <div class="booking-form-container">
+        <form id="booking-form">
+
+          <fieldset>
+            <legend>Sender Information</legend>
+            <input type="text" id="sender-name" value="John Doe" readonly>
+            <input type="text" id="sender-address" value="123 Main St, City" readonly>
+            <input type="text" id="sender-contact" value="9876543210" readonly>
+          </fieldset>
+
+          <fieldset>
+            <legend>Receiver Information</legend>
+            <input type="text" id="receiver-name" placeholder="Receiver Name" required>
+            <input type="text" id="receiver-address" placeholder="Receiver Address" required>
+            <input type="text" id="receiver-pin" placeholder="Pin Code" required>
+            <input type="text" id="receiver-contact" placeholder="Contact Number" required>
+          </fieldset>
+
+          <fieldset>
+            <legend>Parcel Details</legend>
+            <select id="parcel-size">
+              <option value="small">Small (Up to 1kg)</option>
+              <option value="medium">Medium (1-5kg)</option>
+              <option value="large">Large (5-10kg)</option>
+              <option value="extra-large">Extra Large (10kg+)</option>
+            </select>
+            <input type="text" id="parcel-description" placeholder="Contents Description" required>
+          </fieldset>
+
+
+          <fieldset>
+            <legend>Shipping Options</legend>
+            <select id="delivery-speed">
+              <option value="standard">Standard</option>
+              <option value="express">Express</option>
+            </select>
+            <select id="packaging-type">
+              <option value="standard">Standard Packaging</option>
+              <option value="custom">Custom Packaging</option>
+              <option value="eco">Eco-friendly Packaging</option>
+              <option value="fragile">Fragile Item Handling</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend>Pickup/Drop-off Time</legend>
+            <input type="datetime-local" id="pickup-time" required>
+          </fieldset>
+
+          <fieldset>
+            <legend>Service Cost & Payment</legend>
+            <p>Estimated Cost: <span id="cost">$10.00</span></p>
+            <select id="payment-method">
+              <option value="credit">Credit Card</option>
+              <option value="debit">Debit Card</option>
+              <option value="upi">UPI</option>
+              <option value="cod">Cash on Delivery</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend>Additional Services</legend>
+            <label><input type="checkbox" id="insurance"> Insurance</label>
+            <label><input type="checkbox" id="tracking"> Tracking Service</label>
+          </fieldset>
+
+          <button type="submit">Submit Booking</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js">
+    document.addEventListener("DOMContentLoaded", function () {
+      const parcelSize = document.getElementById("parcel-size");
+      const deliverySpeed = document.getElementById("delivery-speed");
+      const packagingType = document.getElementById("packaging-type");
+      const costDisplay = document.getElementById("cost");
+
+      // Base Prices for Parcel Size
+      const basePrices = {
+        "small": 10,
+        "medium": 15,
+        "large": 20,
+        "extra-large": 30
+      };
+
+      // Shipping Speed Prices
+      const shippingRates = {
+        "standard": 5,
+        "express": 15
+      };
+
+      // Packaging Type Prices
+      const packagingRates = {
+        "standard": 0,
+        "custom": 5,
+        "eco": 3,
+        "fragile": 10
+      };
+
+      function calculateCost() {
+        let totalCost = 0;
+
+        // Get selected values
+        let selectedSize = parcelSize.value.toLowerCase();
+        let selectedSpeed = deliverySpeed.value;
+        let selectedPackaging = packagingType.value;
+
+        // Add base price based on size
+        totalCost += basePrices[selectedSize] || 0;
+
+        // Add shipping cost
+        totalCost += shippingRates[selectedSpeed] || 0;
+
+        // Add packaging cost
+        totalCost += packagingRates[selectedPackaging] || 0;
+
+        // Display updated cost inside the "Service Cost & Payment" section
+        costDisplay.innerText = `$${totalCost.toFixed(2)}`;
+      }
+
+      // Event Listeners for cost calculation
+      parcelSize.addEventListener("change", calculateCost);
+      deliverySpeed.addEventListener("change", calculateCost);
+      packagingType.addEventListener("change", calculateCost);
+
+      // Initial cost calculation
+      calculateCost();
+    });
+  </script>
+</body>
+
+</html>

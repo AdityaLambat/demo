@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Home Screen</title>
+  <link rel="stylesheet" href="mainstyles.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Welcome Message -->
+    <div class="welcome-message">
+      Welcome <span style="font-weight: bold" id="username">User</span>
+    </div>
+
+    <!-- Top Bar Menu -->
+    <div class="top-bar">
+      <ul>
+        <li><a href="customer-home.html" id="home">Home</a></li>
+        <li><a href="customer-booking.html" id="booking">Booking Service</a></li>
+        <li><a href="#" id="tracking">Tracking</a></li>
+        <li><a href="#" id="previous-booking">Previous Booking</a></li>
+        <li><a href="#" id="contact-support">Contact Support</a></li>
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <h1>Home Page</h1>
+      <p>This is the home page content.</p>
+      <div class="card-container">
+        <!-- Card 1 -->
+        <div class="card">
+          <i class="fa-solid fa-truck-fast"></i>
+          <p>Express Delivery</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <i class="fas fa-box-open"></i>
+          <p>Unboxing & Handling</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <i class="fas fa-map-marked-alt"></i>
+          <p>Location & Tracking</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <i class="fas fa-people-carry"></i>
+          <p>Team Support</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+          <i class="fas fa-shield-alt"></i>
+          <p>Safe & Secure</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

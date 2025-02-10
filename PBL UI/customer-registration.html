@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="register-container">
+      <h2>Registration</h2>
+      <form id="registrationForm">
+        <div class="input-box">
+          <input type="text" id="customerName" placeholder="Customer Name" required maxlength="50">
+        </div>
+        <div class="input-box">
+          <input type="email" id="email" placeholder="Email" required>
+        </div>
+        <div class="input-box" style="display: flex; gap: 10px; align-items: center;">
+          <select id="countryCode" required style="width: 30%;">
+            <option value="+1">+1 USA</option>
+            <option value="+91" selected>+91 India</option>
+            <option value="+44">+44 UK</option>
+            <option value="+61">+61 Australia</option>
+            <option value="+81">+81 Japan</option>
+            <option value="+33">+33 France</option>
+            <option value="+49">+49 Germany</option>
+            <option value="+86">+86 China</option>
+            <option value="+55">+55 Brazil</option>
+            <option value="+7">+7 Russia</option>
+          </select>
+          <input type="text" id="mobileNumber" placeholder="Mobile Number" required pattern="\d{10}">
+        </div>
+        <div class="input-box">
+          <input type="text" id="address" placeholder="Mailing Address" required>
+        </div>
+        <div class="input-box">
+          <input type="text" id="userId" placeholder="User ID" required minlength="5" maxlength="20">
+        </div>
+        <div class="input-box">
+          <input type="password" id="password" placeholder="Password" required maxlength="30">
+        </div>
+        <div class="input-box">
+          <input type="password" id="confirmPassword" placeholder="Confirm Password" required maxlength="30">
+        </div>
+        <div class="input-box" style="display: flex; align-items: center; gap: 5px;">
+          <input style="width: 5%;" type="checkbox" id="notifyByEmail">
+          <label for="notifyByEmail">Receive notifications via email</label>
+        </div>
+        <div class="input-box button" style="display: flex; gap: 5%;">
+          <input type="submit" value="Submit">
+          <input type="reset" value="Reset">
+        </div>
+        <div class="text">
+          <h3>Already have an account? <a href="customer-login.html">Login now</a></h3>
+        </div>
+      </form>
+      <div id="acknowledgment" style="display:none; color: green;">Consumer Registration successful.</div>
+    </div>
+
+    <div id="errorPopup" class="popup">
+      <div class="popup-content">
+        <p id="errorMessage"></p>
+        <button onclick="closePopup()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Registration
+
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get form values
+      const customerName = document.getElementById("customerName").value;
+      const email = document.getElementById("email").value;
+      const userId = document.getElementById("userId").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      let key = false;
+      if (userId.length < 5 || userId.length > 20) {
+        errorMessage = "User ID must be between 5 and 20 characters.";
+      }
+      if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])/.test(password) || (password.length < 8 || password.length > 30)) {
+        errorMessage = "Password must be min 8 and max 30 characters, contain at least one uppercase, one lowercase, and one special character.";
+      } else {
+        key = true;
+        errorMessage = ""
+      }
+
+      if (errorMessage) {
+        document.getElementById("errorMessage").innerText = errorMessage;
+        document.getElementById("errorPopup").style.display = "block";
+      }
+
+      // Validate password
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      } else if (key) {
+        const randomUsername = userId + Math.floor(Math.random() * 1000);
+
+        // Show acknowledgment message
+        const acknowledgment = document.getElementById("acknowledgment");
+        acknowledgment.innerHTML = `Consumer Registration successful. Please login!!!<br><br>
+  <strong>Customer Username:</strong> ${randomUsername}<br>
+  <strong>Customer Name:</strong> ${customerName}<br>
+  <strong>Email:</strong> ${email}`;
+        acknowledgment.style.display = "block";
+
+        // Reset form after submission
+        this.reset();
+      }
+
+    });
+
+    function closePopup() {
+      document.getElementById("errorPopup").style.display = "none";
+    }
+  </script>
+</body>
+
+</html>

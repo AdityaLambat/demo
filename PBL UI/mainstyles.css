@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Welcome Message */
+.welcome-message {
+  text-align: right;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Top Bar Menu */
+.top-bar {
+  background-color: #ff8000;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.top-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.top-bar ul li {
+  display: inline;
+}
+
+.top-bar ul li a {
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+}
+
+.top-bar ul li a:hover {
+  color: black;
+}
+
+/* Content Area */
+.content {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Container */
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  /* Adjust as needed */
+  margin: 0 auto;
+  /* Center the container */
+  padding: 20px;
+}
+
+/* Individual Card */
+.card {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  width: 15%;
+  margin: 2%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Font Awesome Icon */
+.card i {
+  font-size: 64px;
+  color: black;
+  margin-bottom: 15px;
+}
+
+/* Card Title */
+.card h3 {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+/* Booking */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #34495e;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Pagination Section */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination button {
+  background-color: #34495e;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #2c3e50;
+}
+
+.pagination button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+/* Booking Form Container */
+.booking-form-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+.booking-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-form-container fieldset {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.booking-form-container legend {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Input Fields */
+.booking-form-container input,
+.booking-form-container select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Readonly Fields */
+.booking-form-container input[readonly] {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Checkbox & Radio Buttons */
+.booking-form-container label {
+  display: block;
+  margin-top: 10px;
+}
+
+.booking-form-container input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Submit Button */
+.booking-form-container button {
+  background-color: #ff8000;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.booking-form-container button:hover {
+  background-color: #e67300;
+}
+
+/* Additional Services - Checkboxes */
+.booking-form-container fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Reduce space between checkbox and text */
+  margin-bottom: 5px;
+  /* Reduce extra spacing */
+}
+
+/* Inline Checkboxes */
+.booking-form-container fieldset label input[type="checkbox"] {
+  width: auto;
+  /* Keep checkbox size default */
+  margin-right: 5px;
+  /* Add slight gap */
+}
+
+/* Align checkboxes horizontally */
+.booking-form-container fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  /* Reduce space between checkbox options */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .booking-form-container {
+    width: 90%;
+  }
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+}
